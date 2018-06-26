@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+
+<div class="container">
+    <!--/*@thymesVar id="request" type="com.piatkouskaya.test.dto.RequestDto"*/-->
+    <form th:action="@{/testRequest}" method="post" th:object="${request}">
+        <input type="text" th:field="*{requestLine}" name="requestLine" minlength="1" maxlength="100">
+        <input type="submit" name="submit" value="Add search string">
+
+        <tr th:each="req : ${requests}">
+            <br>
+            <td th:text="${req.dateTime}"></td>
+            <br>
+            <td th:text="${req.requestLine}"></td>
+            <button type="submit" th:action="@{/testRequest}" name="delete" th:value="${req.id}">Delete</button>
+            <br>
+        </tr>
+    </form>
+</div>
+</body>
+</html>
