@@ -1,0 +1,7 @@
+CREATE SCHEMA firebase;
+
+CREATE TABLE request (
+  id       BIGSERIAL NOT NULL PRIMARY KEY,
+  datetime TIMESTAMP,
+  line     CHARACTER VARYING(128)
+);
