@@ -37,15 +37,6 @@ public class RequestController {
         return "request_page";
     }
 
-    private List<Request> getRequests() {
-        List<Request> allDesc = requestService.getAllDesc();
-        return allDesc.stream()
-                .peek(it -> ViewRequestDto.builder()
-                        .dateTime(DateTimeUtil.format(it.getDateTime()))
-                        .requestLine(it.getRequestLine()))
-                .collect(Collectors.toList());
-    }
-
     @PostMapping("/testRequest")
     public String doPost(RequestDto testRequest, Model model,
                          @RequestParam(value = "delete", required = false) Long id) {
@@ -64,5 +55,14 @@ public class RequestController {
         model.addAttribute("requests", getRequests());
 
         return "request_page";
+    }
+
+    private List<Request> getRequests() {
+        List<Request> allDesc = requestService.getAllDesc();
+        return allDesc.stream()
+                .peek(it -> ViewRequestDto.builder()
+                        .dateTime(DateTimeUtil.format(it.getDateTime()))
+                        .requestLine(it.getRequestLine()))
+                .collect(Collectors.toList());
     }
 }
