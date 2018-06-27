@@ -1,3 +1,5 @@
+CREATE DATABASE test ENCODING = 'UTF8';
+
 CREATE SCHEMA firebase;
 
 CREATE TABLE request (
